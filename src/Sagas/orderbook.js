@@ -1,6 +1,6 @@
 import { call, put, take } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
-import { TEST_REQUESTED } from '../Actions/constants';
+import { LOAD_ORDERBOOK } from '../Actions/constants';
 import { REGISTER } from './constants';
 
 function onOpen(ws) {
@@ -16,12 +16,11 @@ function onMessage(e, emitter) {
         console.error(`Error parsing : ${e.data}`)
     }
     if (msg) {
-        console.log(msg);
-        const { payload: book } = msg
+        const { payload: orderbook } = msg
         const channel = msg.channel
         switch (channel) {
-        case 'TEST_REQUESTED':
-            return emitter({ type: TEST_REQUESTED, book })
+        case LOAD_ORDERBOOK:
+            return emitter({ type: LOAD_ORDERBOOK, orderbook })
         default:
             // nothing to do
         }
@@ -52,6 +51,7 @@ function* orderbookSaga() {
     const channel = yield call(websocketInitChannel)
     while (true) {
       const action = yield take(channel)
+      //console.log(action)
       yield put(action)
     }
 }

@@ -1,1 +1,1 @@
-export const TEST_REQUESTED = "TEST_REQUESTED"
+export const LOAD_ORDERBOOK = "LOAD_ORDERBOOK"

@@ -1,6 +1,6 @@
-export function test(payload) {
+export function loadOrderbook(orderbook) {
     return {
-        type: 'TEST_REQUESTED',
-        payload
+        type: 'LOAD_ORDERBOOK',
+        orderbook
     }
 }
