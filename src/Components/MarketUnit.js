@@ -14,8 +14,8 @@ function MarketUnit({pair, orderbook}) {
   function display(item, index, className) {
       return (
         <div className={className + " row"} key={index}>
-          <div className="price">{item[PRICE].substring(0,8)}</div>
-          <div className="volume">{item[VOLUME].substring(0,5)}</div>
+          <div className="price">{Math.round(parseFloat(item[PRICE])*100000)/100000}</div>
+          <div className="volume">{Math.round(parseFloat(item[VOLUME])*100000)/100000}</div>
         </div>
         )
   }
