@@ -7,7 +7,10 @@ const orderbookReducer = (state = initialState, action) => {
             const pair = action.orderbook.pair;
             return {
                 ...state,
-                [pair]: action.orderbook.data
+                [pair]: {
+                    data: action.orderbook.data,
+                    updatesPerMinute: action.orderbook.updatesPerMinute
+                }
             }
         default: 
             return state
