@@ -1,6 +1,5 @@
 let initialState = {
-    loading: false,
-    orderbook: undefined
+    data: undefined
 }
 
 const orderbookReducer = (state = initialState, action) => {
@@ -8,7 +7,7 @@ const orderbookReducer = (state = initialState, action) => {
         case 'LOAD_ORDERBOOK':
             return {
                 ...state,
-                orderbook: action.orderbook
+                data: action.orderbook
             }
         default: 
             return state

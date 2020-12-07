@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.scss';
+import TraderScreen from './Views/TraderScreen'
 
 function App() {
   return (
     <div className="app">
-      test
+      <TraderScreen />
     </div>
   );
 }
