@@ -20,24 +20,25 @@ function MarketUnit({pair, orderbook}) {
         )
   }
 
-  function calcAverage() {
-    let average = (parseFloat(topAsks[0][PRICE])+parseFloat(topBids[0][PRICE]))/2
-    return Math.round(average*10000)/10000;
-  }
+  let obPerMinIssue = orderbook.updatesPerMinute === 0;
 
-  function calcSpread() {
-    let spread = ((parseFloat(topAsks[0][PRICE])-parseFloat(topBids[0][PRICE]))/calcAverage())*100
-    return Math.round(spread*10000)/10000;
-  }
+  let average = (parseFloat(topAsks[0][PRICE])+parseFloat(topBids[0][PRICE]))/2
+  average = Math.round(average*10000)/10000
+
+  let spread = ((parseFloat(topAsks[0][PRICE])-parseFloat(topBids[0][PRICE]))/average)*100
+  spread = Math.round(spread*10000)/10000;
+  let spreadIssue = spread > 1;
+
+  let issue = obPerMinIssue || spreadIssue;
 
   return (
-    <div className="market-unit">
+    <div className={(issue)? "market-unit issue" : "market-unit"}>
         <div className="header">
             <div>{pair}</div>
-            <div>Speed: {orderbook.updatesPerMinute} ob/min</div>
+            <div className={(obPerMinIssue)? "issue" : ""}>Speed: {orderbook.updatesPerMinute} ob/min</div>
         </div>
         {topAsksDisplayed}
-        <div className="price average">{calcAverage()} {calcSpread()}%</div>
+        <div className="price average"><div>{average}</div> <div className={(spreadIssue)? "spread issue" : "spread"}>{spread}%</div></div>
         {topBidsDisiplayed}
     </div>
   );

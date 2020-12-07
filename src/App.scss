@@ -23,7 +23,7 @@ html, body, #root {
     .market-unit {
         width: 25%;
         min-width: 200px;
-        min-height: 250px;
+        min-height: 200px;
         border: black 1px solid;
         display: flex;
         flex-direction: column;
@@ -31,17 +31,24 @@ html, body, #root {
         align-items: center;
         padding: 10px;
         margin: 20px;
+        &.issue {
+            border: red 3px solid;
+        }
         .header {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             text-align: center;
             font-size: 20px;
+            .issue {
+                color: red;
+                font-weight: 700;
+            }
         }
         .row { 
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 80%;
-            font-size: 18px;
+            font-size: 15px;
         }
         .asks {
             .price {
@@ -51,6 +58,21 @@ html, body, #root {
         .bids {
             .price {
                 color: rgb(144,186,127);
+            }
+        }
+        .average {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            font-size: 20px;
+            margin: 10px 0px 10px 0px;
+            .spread {
+                font-weight: 700;
+            }
+            .issue {
+                color: red;
+                font-weight: 700;
             }
         }
     }
