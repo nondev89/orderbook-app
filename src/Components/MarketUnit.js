@@ -6,7 +6,7 @@ function MarketUnit({pair, orderbook}) {
   let data = orderbook.data;
   let topAsks = data.asks.slice(0, 3)
   let topAsksDisplayed = topAsks.map((item, index) => { return display(item, index, 'asks') })
-  topAsks.reverse()
+  topAsksDisplayed.reverse()
 
   let topBids = data.bids.slice(0, 3)
   let topBidsDisiplayed = topBids.slice(0, 3).map((item, index) => { return display(item, index, 'bids')})
