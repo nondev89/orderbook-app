@@ -1,7 +1,7 @@
 
 function MarketUnit({pair, orderbook}) {
 
-  const [PRICE, VOLUME, TIMESTAMP] = [0, 1, 2];
+  const [PRICE, VOLUME] = [0, 1];
 
   let data = orderbook.data;
   let topAsks = data.asks.slice(0, 3)
