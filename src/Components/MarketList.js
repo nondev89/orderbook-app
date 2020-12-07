@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 function MarketList() {
-  const orderbook = useSelector(state => state.orderbook.data)
+  const orderbook = useSelector(state => state.orderbook)
 
   let content = (
     <div> LOADING... </div>
@@ -9,7 +9,7 @@ function MarketList() {
 
   if (orderbook !== undefined) {
     content = (
-      <div> {orderbook.asks[0]} </div>
+      <div> {Object.keys(orderbook)} </div>
     )
   
   }

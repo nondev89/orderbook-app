@@ -1,13 +1,13 @@
 let initialState = {
-    data: undefined
 }
 
 const orderbookReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'LOAD_ORDERBOOK':
+            const pair = action.orderbook.pair;
             return {
                 ...state,
-                data: action.orderbook
+                [pair]: action.orderbook.data
             }
         default: 
             return state
