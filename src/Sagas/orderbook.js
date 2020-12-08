@@ -35,7 +35,7 @@ function onError(error) {
 function websocketInitChannel() {
     return eventChannel( emitter => {
         // init the connection here
-        const ws = new WebSocket("ws://192.168.1.187:8080")
+        const ws = new WebSocket(process.env.REACT_APP_SERVER_IP)
         ws.onopen = () => {onOpen(ws)}
         ws.onerror = (error) => {onError(error)}
         ws.onmessage = (e) => {onMessage(e, emitter)}
